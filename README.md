@@ -10,13 +10,16 @@ In this project the user will have 3 options to choose from.
 
 •	Hang man game where the words to be guessed will be saved in a .csv file.
 
+
 Calendar
 
 •	Collaborator - Alberto Cáceres
 
+
 Eibar Statistics
 
 •	Collaborator - Asier Ferrero
+
 
 Hangman
 
