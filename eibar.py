@@ -1,7 +1,6 @@
 import csv
 
 a = 1
-m = 1
 while a == 1:
     print("===================================")
     print("SDEIBAR MENU")
@@ -14,38 +13,42 @@ while a == 1:
     option = input("Enter your option (1-3): ")
 
     if option == "1":
-        f = open("eibar.csv", "a+")  # a append, r read, write
+            fnames = ['id', 'day', 'time', 'location', 'opponent', 'result']
 
-        a = 1
-        while a == 1:
-            d = input("Write the match day (dd/mm/yyyy): ")
-            t = input("Write the match time (00:00): ")
-            p = input("Write where the match was played (Enter H or O): ")
-            o = input("Write the opponent: ")
-            r = input("Write the match result (0-0): ")
+            while m == 1:
+                i = input("Write the match id: ")
+                d = input("Write the match day (dd.mm.yyyy): ")
+                t = input("Write the match time (00:00): ")
+                p = input("Write where the match was played (Enter C or F): ")
+                o = input("Write the opponent: ")
+                r = input("Write the match result (0:0): ")
 
+                dict = {'id': i, 'day': d, 'time': t, 'location': p, 'opponent': o, 'result': r}
 
-            s2 = input("Do you want to enter another match? (y/n): ")
-            if s2 == "y":
-                a = 1
-                m = 0
-            elif s2 == "n":
-                a = 0
-                m = 0
-            else:
-                print("You have to enter y or n.")
-                m = 1
-        f.close()
-        a = 1
+                with open('eibar.csv', 'a+') as csv_file:
+                    dict_object = csv.DictWriter(csv_file, fieldnames=fnames)
+
+                    dict_object.writerow(dict)
+
+                a = input("Do you want to enter another match? (y/n): ")
+
+                if a == 'n':
+                    a = 0
+
+                elif a == 'y':
+                    a = 1
+
+                else:
+                    print("You have to enter 'y' or 'n'")
+                    a = 1
+            f.close()
 
     elif option == "2":
-        f = open("eibar.csv", "r")
-        a = 1
-        while a != 0:
-            reader = csv.DictReader(f)
-            for row in reader:
-                print(row['Id'], row['Day'])
-        a = 1
+        with open('eibar.csv', "r") as csv_file:
+            reader = csv.reader(csv_file)
+
+            for item in reader:
+                print(item)
 
     elif option == "3":
         print("Goodbye")
