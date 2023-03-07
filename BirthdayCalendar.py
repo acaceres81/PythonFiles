@@ -1,6 +1,8 @@
 import calendar
 import datetime
 import csv
+
+
 try:
     f = open('birthdays.csv', 'r')
     fnames = ['First name', 'Surname', 'Year', 'Month', 'Day']
