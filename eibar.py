@@ -17,14 +17,21 @@ while a == 1:
 
         f = 1
         while f == 1:
-            i = input("Write the match id: ")
-            d = input("Write the match day (dd.mm.yyyy): ")
+            i = int(input("Write the match id: "))
+            print("Write the match day (dd.mm.yyyy): ")
+
+            year = int(input("Enter the year: "))
+            month = int(input("Enter the month: "))
+            day = int(input("Enter the day: "))
+
+            w = (day + month + year)
+
             t = input("Write the match time (00:00): ")
-            p = input("Write where the match was played (Enter C or F): ")
-            o = input("Write the opponent: ")
+            p = str(input("Write where the match was played (Enter C or F): "))
+            o = str(input("Write the opponent: "))
             r = input("Write the match result (0:0): ")
 
-            dict = {'id': i, 'day': d, 'time': t, 'location': p, 'opponent': o, 'result': r}
+            dict = {'id': i, 'day': w, 'time': t, 'location': p, 'opponent': o, 'result': r}
 
             with open('eibar.csv', 'a+') as csv_file:
                 dict_object = csv.DictWriter(csv_file, fieldnames=fnames)
