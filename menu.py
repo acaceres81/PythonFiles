@@ -1,5 +1,5 @@
 from BirthdayCalendar import birthday
-from eibarStatistics import eibar
+from eibar import eibar
 
 aukera = 1
 while aukera != 4:
