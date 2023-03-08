@@ -18,22 +18,24 @@ while a == 1:
         f = 1
         while f == 1:
             i = int(input("Write the match id: "))
-            print("Write the match day (dd.mm.yyyy): ")
-
-            year = int(input("Enter the year: "))
-            month = int(input("Enter the month: "))
-            day = int(input("Enter the day: "))
-
-            w = (day + month + year)
-
+            w = input("Write the match day (dd.mm.yyyy): ")
             t = input("Write the match time (00:00): ")
-            p = str(input("Write where the match was played (Enter C or F): "))
+
+            c = 1
+            while c == 1:
+                p = str(input("Write where the match was played (Enter C or F): "))
+                if p == 'C' or p == 'F':
+                    c = 0
+                else:
+                    print("You have to enter C or F")
+                    c = 1
+
             o = str(input("Write the opponent: "))
             r = input("Write the match result (0:0): ")
 
             dict = {'id': i, 'day': w, 'time': t, 'location': p, 'opponent': o, 'result': r}
 
-            with open('eibar.csv', 'a+') as csv_file:
+            with open('eibar.csv', 'a+') as csv_file: #block to append into a csv file
                 dict_object = csv.DictWriter(csv_file, fieldnames=fnames)
 
                 dict_object.writerow(dict)
@@ -56,7 +58,7 @@ while a == 1:
                     b = 1
 
     elif option == "2":
-        with open('eibar.csv', "r") as csv_file:
+        with open('eibar.csv', "r") as csv_file: #block to read a csv file
             reader = csv.reader(csv_file)
 
             for item in reader:
